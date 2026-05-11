@@ -51,14 +51,14 @@ export function CommandPalette() {
     return () => window.removeEventListener('keydown', handler);
   }, [open, selectedIndex]);
 
-  // Reset selected index when query changes
-  useEffect(() => {
-    setSelectedIndex(0);
-  }, [query]);
-
   const filtered = COMMANDS.filter((c) => 
     c.label.toLowerCase().includes(query.toLowerCase())
   );
+
+  // Reset selected index when query changes or filtered length changes
+  useEffect(() => {
+    setSelectedIndex(0);
+  }, [query, filtered.length]);
 
   return (
     <AnimatePresence>

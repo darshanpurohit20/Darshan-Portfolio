@@ -7,6 +7,7 @@ import { CommandPalette } from '@/components/layout/CommandPalette';
 import { LenisProvider } from '@/components/layout/LenisProvider';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://darshanpurohit.dev'),
   title: 'Darshan Purohit — AI Engineer & Backend Developer',
   description: 'Building intelligent systems for the future. RAG pipelines, semantic search, deepfake detection, scalable AI infrastructure.',
   keywords: ['AI Engineer', 'Backend Developer', 'RAG', 'FastAPI', 'PyTorch', 'Deepfake Detection'],
