@@ -24,16 +24,15 @@ interface GitHubUser {
 
 export function GitHub() {
   const [repos, setRepos] = useState<Repo[]>([]);
+  const [displayedRepos, setDisplayedRepos] = useState<Repo[]>([]);
   const [user, setUser] = useState<GitHubUser | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showAll, setShowAll] = useState(false);
+  const INITIAL_DISPLAY_COUNT = 6;
 
   useEffect(() => {
     const fetchGitHubData = async () => {
       try {
-        // Get token from env (for client-side, we need to use NEXT_PUBLIC_ or handle differently)
-        // For now, we'll fetch without token but with higher per_page to get all repos
-        const headers: Record<string, string> = {};
-        
         const [userRes, reposRes] = await Promise.all([
           fetch('https://api.github.com/users/darshanpurohit20'),
           fetch('https://api.github.com/users/darshanpurohit20/repos?sort=updated&per_page=100'),
@@ -43,13 +42,14 @@ export function GitHub() {
           const userData = await userRes.json();
           let reposData = await reposRes.json();
           
-          // Filter out forks and sort by stars
+          // Filter out forks and repos without descriptions, then sort by stars
           reposData = reposData
-            .filter((repo: Repo) => !repo.fork)
+            .filter((repo: Repo) => !repo.fork && repo.description && repo.description.trim() !== '')
             .sort((a: Repo, b: Repo) => b.stargazers_count - a.stargazers_count);
           
           setUser(userData);
           setRepos(reposData);
+          setDisplayedRepos(reposData.slice(0, INITIAL_DISPLAY_COUNT));
         }
       } catch (error) {
         console.error('Error fetching GitHub data:', error);
@@ -60,6 +60,11 @@ export function GitHub() {
 
     fetchGitHubData();
   }, []);
+
+  const handleLoadMore = () => {
+    setShowAll(true);
+    setDisplayedRepos(repos);
+  };
 
   return (
     <section id="github" className="py-32 px-6 max-w-7xl mx-auto">
@@ -104,7 +109,7 @@ export function GitHub() {
             </div>
           ))
         ) : (
-          repos.map((repo, i) => (
+          displayedRepos.map((repo, i) => (
             <motion.a
               key={repo.id}
               href={repo.html_url}
@@ -148,12 +153,30 @@ export function GitHub() {
         )}
       </div>
 
+      {/* Load More Button */}
+      {!loading && repos.length > INITIAL_DISPLAY_COUNT && !showAll && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mt-8"
+        >
+          <button
+            onClick={handleLoadMore}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 text-zinc-400 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"
+          >
+            <GithubIcon size={18} />
+            Load More ({repos.length - INITIAL_DISPLAY_COUNT} more)
+          </button>
+        </motion.div>
+      )}
+
       {/* View All Link */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="text-center mt-12"
+        className="text-center mt-8"
       >
         <a
           href="https://github.com/darshanpurohit20"
@@ -162,7 +185,7 @@ export function GitHub() {
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 text-zinc-400 hover:text-white hover:border-white/25 transition-all"
         >
           <GithubIcon size={18} />
-          View All Repositories
+          View All on GitHub
         </a>
       </motion.div>
     </section>
