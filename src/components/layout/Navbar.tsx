@@ -78,8 +78,9 @@ export function Navbar() {
               <Linkedin size={16} />
             </a>
             <a
-              href="/Darshan_Purohit_Resume.pdf"
-              download
+              href="https://drive.google.com/uc?export=download&id=1M73nryK-kztxwNV2u8WSHeZVmSlpXhkx"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2 text-zinc-400 hover:text-purple-400 transition-colors rounded-full hover:bg-white/5"
             >
               <FileText size={16} />
@@ -136,8 +137,9 @@ export function Navbar() {
                     <Linkedin size={18} />
                   </a>
                   <a
-                    href="/Darshan_Purohit_Resume.pdf"
-                    download
+                    href="https://drive.google.com/uc?export=download&id=1M73nryK-kztxwNV2u8WSHeZVmSlpXhkx"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 px-3 py-2 text-sm text-zinc-400 hover:text-purple-400 transition-colors rounded-full hover:bg-white/5"
                   >
                     <FileText size={16} />

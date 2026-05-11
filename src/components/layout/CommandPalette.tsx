@@ -12,7 +12,7 @@ const COMMANDS = [
   { label: 'Contact', icon: Mail, action: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) },
   { label: 'GitHub Profile', icon: Github, action: () => window.open('https://github.com/darshanpurohit20', '_blank') },
   { label: 'LinkedIn', icon: Linkedin, action: () => window.open('https://linkedin.com/in/darshanpurohit', '_blank') },
-  { label: 'Download Resume', icon: Download, action: () => window.open('/Darshan_Purohit_Resume.pdf', '_blank') },
+  { label: 'Download Resume', icon: Download, action: () => window.open('https://drive.google.com/uc?export=download&id=1M73nryK-kztxwNV2u8WSHeZVmSlpXhkx', '_blank') },
 ];
 
 export function CommandPalette() {

@@ -110,8 +110,8 @@ export function Hero() {
         {/* CTA Buttons */}
         <div className="hero-actions flex flex-wrap items-center justify-center gap-4 mb-20">
           <MagneticButton
-            href="/Darshan_Purohit_Resume.pdf"
-            download
+            href="https://drive.google.com/uc?export=download&id=1M73nryK-kztxwNV2u8WSHeZVmSlpXhkx"
+            target="_blank"
             variant="primary"
             icon={<Download size={16} />}
           >
