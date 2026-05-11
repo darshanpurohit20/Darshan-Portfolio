@@ -8,7 +8,7 @@
 
 > A world-class portfolio showcasing AI engineering expertise, backend development skills, and research work in deepfake detection.
 
-**Live Site:** [darshanpurohit.dev](https://darshanpurohit.dev)
+**Live Site:** [darshanpurohit-portfolio.vercel.app](https://darshanpurohit-portfolio.vercel.app/)
 
 ---
 
@@ -130,7 +130,7 @@ npm start
 ```bash
 # .env.local
 GITHUB_TOKEN=your_github_personal_access_token  # Optional, increases API rate limit
-NEXT_PUBLIC_SITE_URL=https://darshanpurohit.dev
+NEXT_PUBLIC_SITE_URL=https://darshanpurohit-portfolio.vercel.app/
 ```
 
 ---
