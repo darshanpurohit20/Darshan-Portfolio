@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import from Google Fonts CDN with fallbacks */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 @font-face {
   font-family: 'Satoshi';
   src: url('/fonts/Satoshi-Variable.woff2') format('woff2');
@@ -33,8 +37,8 @@
   --text: #f5f5f5;
   --text-2: #a1a1aa;
   --text-3: #52525b;
-  --font-display: 'ClashDisplay', sans-serif;
-  --font-body: 'Satoshi', sans-serif;
+  --font-display: 'ClashDisplay', 'Space Grotesk', sans-serif;
+  --font-body: 'Satoshi', 'Inter', sans-serif;
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
