@@ -35,9 +35,9 @@ export function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   useGSAP(() => {
-    gsap.fromTo('.hero-char', 
-      { y: 120, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.015, duration: 1.2, ease: 'power4.out', delay: 2.2 }
+    gsap.fromTo('.hero-word > span', 
+      { y: 100, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.08, duration: 1, ease: 'power4.out', delay: 2.2 }
     );
     gsap.fromTo('.hero-sub',
       { y: 30, opacity: 0 },
@@ -79,21 +79,21 @@ export function Hero() {
       <motion.div style={{ y, opacity }} className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         
         {/* Floating pills */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {PILLS.map((pill, i) => (
+        <div className="flex flex-wrap justify-center gap-2 mb-8 md:mb-12 px-4 max-w-2xl mx-auto">
+          {PILLS.slice(0, 6).map((pill, i) => (
             <FloatingPill key={pill} delay={i * 0.1 + 2.5}>{pill}</FloatingPill>
           ))}
         </div>
 
-        {/* Main headline - split into chars for GSAP */}
+        {/* Main headline - split into words for better animation */}
         <h1
-          className="text-[clamp(3rem,10vw,8rem)] font-display font-bold leading-[0.9] tracking-tight mb-8 overflow-hidden"
+          className="text-[clamp(2.5rem,8vw,6rem)] md:text-[clamp(3rem,10vw,8rem)] font-display font-bold leading-[1.1] md:leading-[0.95] tracking-tight mb-8 px-2"
           style={{ fontFamily: 'var(--font-display)' }}
           aria-label="Building Intelligent Systems for the Future."
         >
-          {'Building Intelligent Systems for the Future.'.split('').map((char, i) => (
-            <span key={i} className="hero-char inline-block" style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}>
-              {char}
+          {'Building Intelligent Systems for the Future.'.split(' ').map((word, i) => (
+            <span key={i} className="hero-word inline-block mr-[0.25em] overflow-hidden">
+              <span className="inline-block">{word}</span>
             </span>
           ))}
         </h1>

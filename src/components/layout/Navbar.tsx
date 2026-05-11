@@ -29,8 +29,8 @@ export function Navbar() {
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] transition-all duration-300 ${
+        transition={{ delay: 3.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-[50] transition-all duration-300 ${
           scrolled ? 'translate-y-0' : ''
         }`}
       >

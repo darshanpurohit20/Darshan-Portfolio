@@ -31,16 +31,6 @@ const EDUCATION = [
   },
 ];
 
-const EXPERIENCE = [
-  {
-    role: 'Backend Developer Intern',
-    company: 'Konnect Insights',
-    period: 'Jan 2025 – Jun 2025',
-    description: 'Worked on production backend systems for social media analytics platform.',
-    highlights: ['FastAPI', 'MongoDB', 'Redis', 'Celery'],
-  },
-];
-
 export function About() {
   return (
     <section id="about" className="py-32 px-6 max-w-7xl mx-auto">
@@ -76,36 +66,6 @@ export function About() {
             </div>
           </div>
 
-          {/* Experience */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-medium text-zinc-400 uppercase tracking-wider">Experience</h3>
-            {EXPERIENCE.map((exp, i) => (
-              <motion.div
-                key={exp.company}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                viewport={{ once: true }}
-                className="p-6 rounded-xl border border-white/[0.06] bg-[#0d0d0f]"
-              >
-                <div className="flex items-start justify-between mb-2">
-                  <div>
-                    <h4 className="font-medium text-white">{exp.role}</h4>
-                    <p className="text-sm text-zinc-400">{exp.company}</p>
-                  </div>
-                  <span className="text-xs text-zinc-500">{exp.period}</span>
-                </div>
-                <p className="text-sm text-zinc-500 mb-3">{exp.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {exp.highlights.map((h) => (
-                    <span key={h} className="px-2 py-1 text-xs rounded bg-white/[0.03] text-zinc-400">
-                      {h}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </motion.div>
 
         {/* Education */}
