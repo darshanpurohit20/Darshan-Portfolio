@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Github, Linkedin, Download, Home, Briefcase, User, Mail, Code, Terminal } from 'lucide-react';
 
@@ -19,6 +19,16 @@ export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
+  
+  const filtered = COMMANDS.filter((c) => 
+    c.label.toLowerCase().includes(query.toLowerCase())
+  );
+  
+  // Use ref to avoid dependency issues in keyboard handler
+  const filteredRef = useRef(filtered);
+  filteredRef.current = filtered;
+  const selectedIndexRef = useRef(selectedIndex);
+  selectedIndexRef.current = selectedIndex;
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -29,18 +39,21 @@ export function CommandPalette() {
       if (e.key === 'Escape') setOpen(false);
       
       if (open) {
+        const currentFiltered = filteredRef.current;
+        const currentIndex = selectedIndexRef.current;
+        
         if (e.key === 'ArrowDown') {
           e.preventDefault();
-          setSelectedIndex((prev) => (prev + 1) % filtered.length);
+          setSelectedIndex((prev) => (prev + 1) % currentFiltered.length);
         }
         if (e.key === 'ArrowUp') {
           e.preventDefault();
-          setSelectedIndex((prev) => (prev - 1 + filtered.length) % filtered.length);
+          setSelectedIndex((prev) => (prev - 1 + currentFiltered.length) % currentFiltered.length);
         }
         if (e.key === 'Enter') {
           e.preventDefault();
-          if (filtered[selectedIndex]) {
-            filtered[selectedIndex].action();
+          if (currentFiltered[currentIndex]) {
+            currentFiltered[currentIndex].action();
             setOpen(false);
           }
         }
@@ -49,11 +62,7 @@ export function CommandPalette() {
     
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [open, selectedIndex]);
-
-  const filtered = COMMANDS.filter((c) => 
-    c.label.toLowerCase().includes(query.toLowerCase())
-  );
+  }, [open]);
 
   // Reset selected index when query changes or filtered length changes
   useEffect(() => {
