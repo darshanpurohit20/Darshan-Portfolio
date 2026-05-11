@@ -78,16 +78,18 @@ export function Hero() {
       {/* Content */}
       <motion.div style={{ y, opacity }} className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center w-full">
         
-        {/* Floating pills */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8 md:mb-12 px-4 max-w-2xl mx-auto">
+        {/* Floating pills - responsive visibility */}
+        <div className="flex flex-wrap justify-center gap-2 mb-6 md:mb-10 px-2 max-w-xl mx-auto">
           {PILLS.slice(0, 6).map((pill, i) => (
-            <FloatingPill key={pill} delay={i * 0.1 + 2.5}>{pill}</FloatingPill>
+            <span key={pill} className={i >= 4 ? 'hidden sm:inline-block' : 'inline-block'}>
+              <FloatingPill delay={i * 0.1 + 2.5}>{pill}</FloatingPill>
+            </span>
           ))}
         </div>
 
         {/* Main headline - split into words for better animation */}
         <h1
-          className="text-[clamp(2.5rem,8vw,6rem)] md:text-[clamp(3rem,10vw,8rem)] font-display font-bold leading-[1.1] md:leading-[0.95] tracking-tight mb-8 px-2"
+          className="text-[clamp(1.75rem,7vw,5rem)] sm:text-[clamp(2.5rem,8vw,6rem)] md:text-[clamp(3rem,10vw,8rem)] font-display font-bold leading-[1.15] md:leading-[0.95] tracking-tight mb-6 md:mb-8 px-2"
           style={{ fontFamily: 'var(--font-display)' }}
           aria-label="Building Intelligent Systems for the Future."
         >
@@ -99,16 +101,16 @@ export function Hero() {
         </h1>
 
         {/* Typing subheading */}
-        <div className="hero-sub max-w-3xl mx-auto mb-12">
-          <p className="text-[clamp(1rem,2vw,1.25rem)] text-zinc-400 leading-relaxed">
-            AI Engineer building RAG systems &amp; semantic search. Backend Developer scaling FastAPI infrastructure.
-            <br />
-            <span className="text-zinc-500">B.Tech IT @ DJSCE — CGPA 9.11</span>
+        <div className="hero-sub max-w-3xl mx-auto mb-8 md:mb-12 px-4">
+          <p className="text-sm sm:text-base md:text-[clamp(1rem,2vw,1.25rem)] text-zinc-400 leading-relaxed">
+            <span className="block sm:inline">AI Engineer building RAG systems &amp; semantic search.</span>{' '}
+            <span className="block sm:inline">Backend Developer scaling FastAPI infrastructure.</span>
+            <span className="block mt-2 text-zinc-500">B.Tech IT @ DJSCE — CGPA 9.11</span>
           </p>
         </div>
 
         {/* CTA Buttons */}
-        <div className="hero-actions flex flex-wrap items-center justify-center gap-4 mb-20">
+        <div className="hero-actions flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 md:mb-20 px-4">
           <MagneticButton
             href="https://drive.google.com/uc?export=download&id=1M73nryK-kztxwNV2u8WSHeZVmSlpXhkx"
             target="_blank"

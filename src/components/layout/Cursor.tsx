@@ -45,15 +45,15 @@ export function Cursor() {
 
   return (
     <>
-      {/* Outer ring */}
+      {/* Outer ring - hidden on touch devices */}
       <motion.div
         style={{ x: springX, y: springY }}
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-purple-500/50 pointer-events-none z-[9998] mix-blend-difference"
+        className="hidden md:block fixed top-0 left-0 w-8 h-8 rounded-full border border-purple-500/50 pointer-events-none z-[9998] mix-blend-difference"
       />
-      {/* Inner dot */}
+      {/* Inner dot - hidden on touch devices */}
       <motion.div
         style={{ x: dotX, y: dotY }}
-        className="fixed top-0 left-0 w-8 h-8 flex items-center justify-center pointer-events-none z-[9998]"
+        className="hidden md:block fixed top-0 left-0 w-8 h-8 flex items-center justify-center pointer-events-none z-[9998]"
       >
         <div className="w-1.5 h-1.5 rounded-full bg-white" />
       </motion.div>

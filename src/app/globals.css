@@ -58,7 +58,13 @@ body {
   color: var(--text);
   font-family: var(--font-body);
   overflow-x: hidden;
-  cursor: none;
+}
+
+/* Custom cursor only on desktop */
+@media (min-width: 768px) {
+  body {
+    cursor: none;
+  }
 }
 
 ::selection {

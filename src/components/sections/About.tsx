@@ -33,7 +33,7 @@ const EDUCATION = [
 
 export function About() {
   return (
-    <section id="about" className="py-32 px-6 max-w-7xl mx-auto">
+    <section id="about" className="py-20 md:py-32 px-4 sm:px-6 max-w-7xl mx-auto">
       <SectionHeader
         eyebrow="About"
         title="The mind behind the machine."

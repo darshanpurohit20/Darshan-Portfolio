@@ -117,7 +117,7 @@ export function Projects() {
   }, { scope: ref });
 
   return (
-    <section ref={ref} id="projects" className="py-32 px-6 max-w-7xl mx-auto">
+    <section ref={ref} id="projects" className="py-20 md:py-32 px-4 sm:px-6 max-w-7xl mx-auto">
       <SectionHeader
         eyebrow="Work"
         title="Projects that matter."
