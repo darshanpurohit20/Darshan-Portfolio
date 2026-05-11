@@ -13,6 +13,7 @@ interface Repo {
   forks_count: number;
   language: string;
   html_url: string;
+  fork: boolean;
 }
 
 interface GitHubUser {
@@ -29,14 +30,24 @@ export function GitHub() {
   useEffect(() => {
     const fetchGitHubData = async () => {
       try {
+        // Get token from env (for client-side, we need to use NEXT_PUBLIC_ or handle differently)
+        // For now, we'll fetch without token but with higher per_page to get all repos
+        const headers: Record<string, string> = {};
+        
         const [userRes, reposRes] = await Promise.all([
           fetch('https://api.github.com/users/darshanpurohit20'),
-          fetch('https://api.github.com/users/darshanpurohit20/repos?sort=updated&per_page=6'),
+          fetch('https://api.github.com/users/darshanpurohit20/repos?sort=updated&per_page=100'),
         ]);
 
         if (userRes.ok && reposRes.ok) {
           const userData = await userRes.json();
-          const reposData = await reposRes.json();
+          let reposData = await reposRes.json();
+          
+          // Filter out forks and sort by stars
+          reposData = reposData
+            .filter((repo: Repo) => !repo.fork)
+            .sort((a: Repo, b: Repo) => b.stargazers_count - a.stargazers_count);
+          
           setUser(userData);
           setRepos(reposData);
         }
@@ -111,9 +122,11 @@ export function GitHub() {
                 </h4>
                 <ExternalLink size={14} className="text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              <p className="text-sm text-zinc-500 line-clamp-2 mb-4 min-h-[40px]">
-                {repo.description || 'No description available'}
-              </p>
+              {repo.description && (
+                <p className="text-sm text-zinc-500 line-clamp-2 mb-4">
+                  {repo.description}
+                </p>
+              )}
               <div className="flex items-center gap-4 text-xs text-zinc-500">
                 {repo.language && (
                   <span className="flex items-center gap-1">
