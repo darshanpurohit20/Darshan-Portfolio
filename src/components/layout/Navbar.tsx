@@ -27,12 +27,10 @@ export function Navbar() {
   return (
     <>
       <motion.nav
-        initial={{ y: -100, opacity: 0 }}
+        initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 3.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-[50] transition-all duration-300 ${
-          scrolled ? 'translate-y-0' : ''
-        }`}
+        className="fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-[50]"
       >
         <div className="flex items-center gap-1 px-2 py-2 rounded-full border border-white/10 bg-[#0d0d0f]/80 backdrop-blur-md">
           {/* Logo */}
@@ -97,14 +95,14 @@ export function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - positioned above bottom navbar */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed top-24 left-1/2 -translate-x-1/2 z-[99] w-[90%] max-w-sm md:hidden"
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-20 left-1/2 -translate-x-1/2 z-[49] w-[90%] max-w-sm md:hidden"
           >
             <div className="rounded-2xl border border-white/10 bg-[#0d0d0f]/95 backdrop-blur-md p-4">
               <div className="flex flex-col gap-2">

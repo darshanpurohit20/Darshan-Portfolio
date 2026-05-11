@@ -79,7 +79,7 @@ export function Hero() {
       <motion.div style={{ y, opacity }} className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center w-full">
         
         {/* Floating pills - responsive visibility */}
-        <div className="flex flex-wrap justify-center gap-2 mb-6 md:mb-10 px-2 max-w-xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-2 mb-4 md:mb-6 px-2 max-w-xl mx-auto">
           {PILLS.slice(0, 6).map((pill, i) => (
             <span key={pill} className={i >= 4 ? 'hidden sm:inline-block' : 'inline-block'}>
               <FloatingPill delay={i * 0.1 + 2.5}>{pill}</FloatingPill>
@@ -89,7 +89,7 @@ export function Hero() {
 
         {/* Main headline - split into words for better animation */}
         <h1
-          className="text-[clamp(1.75rem,7vw,5rem)] sm:text-[clamp(2.5rem,8vw,6rem)] md:text-[clamp(3rem,10vw,8rem)] font-display font-bold leading-[1.15] md:leading-[0.95] tracking-tight mb-6 md:mb-8 px-2"
+          className="text-[clamp(1.75rem,6vw,4rem)] sm:text-[clamp(2.25rem,6.5vw,5rem)] md:text-[clamp(2.5rem,7vw,6rem)] font-display font-bold leading-[1.1] md:leading-[0.95] tracking-tight mb-4 md:mb-6 px-2"
           style={{ fontFamily: 'var(--font-display)' }}
           aria-label="Building Intelligent Systems for the Future."
         >
@@ -101,8 +101,8 @@ export function Hero() {
         </h1>
 
         {/* Typing subheading */}
-        <div className="hero-sub max-w-3xl mx-auto mb-8 md:mb-12 px-4">
-          <p className="text-sm sm:text-base md:text-[clamp(1rem,2vw,1.25rem)] text-zinc-400 leading-relaxed">
+        <div className="hero-sub max-w-3xl mx-auto mb-6 md:mb-8 px-4">
+          <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
             <span className="block sm:inline">AI Engineer building RAG systems &amp; semantic search.</span>{' '}
             <span className="block sm:inline">Backend Developer scaling FastAPI infrastructure.</span>
             <span className="block mt-2 text-zinc-500">B.Tech IT @ DJSCE — CGPA 9.11</span>
@@ -110,7 +110,7 @@ export function Hero() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="hero-actions flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 md:mb-20 px-4">
+        <div className="hero-actions flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8 md:mb-12 px-4">
           <MagneticButton
             href="https://drive.google.com/uc?export=download&id=1M73nryK-kztxwNV2u8WSHeZVmSlpXhkx"
             target="_blank"
@@ -127,33 +127,33 @@ export function Hero() {
           </MagneticButton>
         </div>
 
-        {/* Animated stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+        {/* Animated stats - more compact */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 max-w-3xl mx-auto px-4">
           {STATS.map((stat, i) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.3 + i * 0.1, duration: 0.6 }}
-              className="border border-white/5 rounded-xl p-4 backdrop-blur-sm bg-white/[0.02]"
+              transition={{ delay: 3.0 + i * 0.08, duration: 0.5 }}
+              className="border border-white/5 rounded-lg md:rounded-xl p-2 sm:p-3 backdrop-blur-sm bg-white/[0.02]"
             >
               <div 
-                className="text-2xl font-bold font-display text-white" 
+                className="text-base sm:text-lg md:text-xl font-bold font-display" 
                 style={{ fontFamily: 'var(--font-display)', color: 'var(--purple)' }}
               >
                 {stat.value}
               </div>
-              <div className="text-xs text-zinc-500 mt-1">{stat.label}</div>
+              <div className="text-[10px] sm:text-xs text-zinc-500 mt-0.5">{stat.label}</div>
             </motion.div>
           ))}
         </div>
       </motion.div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - hidden on small screens */}
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-zinc-600"
+        className="hidden lg:flex absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-2 text-zinc-600"
       >
         <span className="text-xs tracking-widest uppercase">Scroll</span>
         <ArrowDown size={16} />
