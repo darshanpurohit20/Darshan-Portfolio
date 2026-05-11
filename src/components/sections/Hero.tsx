@@ -50,7 +50,7 @@ export function Hero() {
   }, { scope: ref });
 
   return (
-    <section ref={ref} id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section ref={ref} id="hero" className="relative min-h-[100vh] h-auto flex flex-col items-center justify-center overflow-hidden py-20 md:py-0">
       
       {/* Three.js particle background */}
       <div className="absolute inset-0 z-0">
@@ -76,7 +76,7 @@ export function Hero() {
       />
 
       {/* Content */}
-      <motion.div style={{ y, opacity }} className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+      <motion.div style={{ y, opacity }} className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center w-full">
         
         {/* Floating pills */}
         <div className="flex flex-wrap justify-center gap-2 mb-8 md:mb-12 px-4 max-w-2xl mx-auto">
