@@ -10,20 +10,23 @@ const EDUCATION = [
     degree: 'B.Tech in Information Technology',
     period: '2022 – 2026',
     grade: 'CGPA: 9.11',
+    location: 'Mumbai, India',
     icon: GraduationCap,
   },
   {
-    school: 'Pace Junior Science College',
-    degree: 'Higher Secondary (HSC)',
-    period: '2020 – 2022',
-    grade: 'Percentage: 81%',
+    school: 'Nirmala Memorial Foundation College',
+    degree: 'Higher Secondary (Science)',
+    period: '2021 – 2023',
+    grade: 'Percentage: 84.50%',
+    location: 'Mumbai, India',
     icon: Calendar,
   },
   {
-    school: 'Childrens Academy',
-    degree: 'Secondary (ICSE)',
-    period: '2012 – 2020',
-    grade: 'Percentage: 94.4%',
+    school: 'Shanti Nagar High School',
+    degree: 'Secondary School (SSC)',
+    period: '2012 – 2021',
+    grade: 'Percentage: 87.80%',
+    location: 'Thane, India',
     icon: Award,
   },
 ];
@@ -129,9 +132,13 @@ export function About() {
               <div className="flex-1">
                 <h4 className="font-medium text-white mb-1">{edu.school}</h4>
                 <p className="text-sm text-zinc-400 mb-1">{edu.degree}</p>
-                <div className="flex items-center gap-4 text-xs text-zinc-500">
+                <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-500">
                   <span>{edu.period}</span>
                   <span className="text-purple-400 font-medium">{edu.grade}</span>
+                  <span className="flex items-center gap-1">
+                    <MapPin size={10} />
+                    {edu.location}
+                  </span>
                 </div>
               </div>
             </motion.div>
